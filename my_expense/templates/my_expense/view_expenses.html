@@ -1,0 +1,12 @@
+{% extends "my_expense/base.html" %}
+{% block title %}My expenses{% endblock %}
+{% block content %}
+	<h1>My expenses:</h1>
+		<ol>
+			{% for expense in expenses %}
+				<li>{{ expense.user }} - {{ expense.price }} - {{ expense.category }}</li>
+			{% empty %}
+				<li>No expenses yet</li>
+			{% endfor %}
+			</ol>
+{% endblock %}

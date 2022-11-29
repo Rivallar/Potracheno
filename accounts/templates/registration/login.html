@@ -1,0 +1,12 @@
+<h1>Login view</h1>
+{% if form.errors %}
+	<p>Something went wrong. Check your input.</p>
+{% else %}
+	<p>Enter your credentails:</p>
+{% endif %}
+<form action="{% url 'accounts:login' %}" method="post">
+	{{ form.as_p }}
+	{% csrf_token %}
+	<input type="submit" value="register">
+</form>
+<a href="{% url 'accounts:password_reset' %}">Reset password</a>

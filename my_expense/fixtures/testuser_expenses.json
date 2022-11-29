@@ -1,0 +1,804 @@
+[
+{
+  "model": "my_expense.category",
+  "pk": 1,
+  "fields": {
+    "title": "Monthly",
+    "category_group": ""
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 2,
+  "fields": {
+    "title": "Home Food",
+    "category_group": "Food"
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 3,
+  "fields": {
+    "title": "Work Food",
+    "category_group": "Food"
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 4,
+  "fields": {
+    "title": "Other Food",
+    "category_group": "Food"
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 5,
+  "fields": {
+    "title": "Pet",
+    "category_group": ""
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 6,
+  "fields": {
+    "title": "Other",
+    "category_group": ""
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 7,
+  "fields": {
+    "title": "Household expenses",
+    "category_group": ""
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 8,
+  "fields": {
+    "title": "Party Other",
+    "category_group": "Party"
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 9,
+  "fields": {
+    "title": "Party Alcohol",
+    "category_group": "Party"
+  }
+},
+{
+  "model": "my_expense.category",
+  "pk": 10,
+  "fields": {
+    "title": "Party Food",
+    "category_group": "Party"
+  }
+},
+{
+  "model": "my_expense.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "phone": "+375255490411",
+    "expense_categories": [
+      2,
+      7,
+      1,
+      6,
+      4,
+      9,
+      10,
+      8,
+      5,
+      3
+    ]
+  }
+},
+{
+  "model": "my_expense.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "phone": "+375447101370",
+    "expense_categories": [
+      2,
+      7,
+      1,
+      6,
+      4,
+      9,
+      10,
+      8,
+      5,
+      3
+    ]
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "category": 6,
+    "price": "666.00",
+    "comment": "xxx",
+    "timestamp": "2022-11-23T09:46:11.225Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "category": 1,
+    "price": "50.00",
+    "comment": "second expense",
+    "timestamp": "2022-11-23T09:47:40.300Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "14.83",
+    "comment": "",
+    "timestamp": "2022-10-01T09:57:07Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "60.00",
+    "comment": "",
+    "timestamp": "2022-10-02T11:14:12Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "category": 4,
+    "price": "38.00",
+    "comment": "sushi",
+    "timestamp": "2022-10-02T11:14:41Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 6,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "12.00",
+    "comment": "",
+    "timestamp": "2022-10-02T11:15:20Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 7,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "12.87",
+    "comment": "",
+    "timestamp": "2022-10-03T11:15:44Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 8,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "9.50",
+    "comment": "medicine",
+    "timestamp": "2022-10-04T11:16:20Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 9,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "12.00",
+    "comment": "",
+    "timestamp": "2022-10-05T11:16:47Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 10,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "19.00",
+    "comment": "",
+    "timestamp": "2022-10-06T11:17:15Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 11,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "15.72",
+    "comment": "",
+    "timestamp": "2022-10-07T11:17:46Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 12,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "30.00",
+    "comment": "",
+    "timestamp": "2022-10-07T11:18:16Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 13,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "28.00",
+    "comment": "",
+    "timestamp": "2022-10-08T11:18:46Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 14,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "24.00",
+    "comment": "",
+    "timestamp": "2022-10-08T11:19:13Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 15,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "10.22",
+    "comment": "medicine",
+    "timestamp": "2022-10-08T11:19:43Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 16,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "8.05",
+    "comment": "",
+    "timestamp": "2022-10-09T11:20:13Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 17,
+  "fields": {
+    "user": 2,
+    "category": 4,
+    "price": "13.50",
+    "comment": "MacD",
+    "timestamp": "2022-10-10T11:20:38Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 18,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "1.56",
+    "comment": "medicine",
+    "timestamp": "2022-10-10T11:21:18Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 19,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "43.30",
+    "comment": "",
+    "timestamp": "2022-10-12T11:21:44Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 20,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "6.57",
+    "comment": "",
+    "timestamp": "2022-10-12T11:22:16Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 21,
+  "fields": {
+    "user": 2,
+    "category": 4,
+    "price": "25.00",
+    "comment": "pizza",
+    "timestamp": "2022-10-13T11:22:38Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 22,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "14.00",
+    "comment": "",
+    "timestamp": "2022-10-13T11:23:01Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 23,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "12.00",
+    "comment": "",
+    "timestamp": "2022-10-13T11:23:28Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 24,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "13.81",
+    "comment": "",
+    "timestamp": "2022-10-14T11:23:53Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 25,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "43.81",
+    "comment": "",
+    "timestamp": "2022-10-16T11:24:26Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 26,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "24.72",
+    "comment": "",
+    "timestamp": "2022-10-16T11:25:01Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 27,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "50.00",
+    "comment": "bag for Mila",
+    "timestamp": "2022-10-16T11:25:50Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 28,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "3.29",
+    "comment": "",
+    "timestamp": "2022-10-17T11:26:29Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 29,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "80.00",
+    "comment": "Jeans",
+    "timestamp": "2022-10-17T11:26:56Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 30,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "33.83",
+    "comment": "",
+    "timestamp": "2022-10-18T11:27:19Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 31,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "100.00",
+    "comment": "Jacket",
+    "timestamp": "2022-10-18T11:27:55Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 32,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "6.90",
+    "comment": "",
+    "timestamp": "2022-10-19T11:28:29Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 33,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "11.00",
+    "comment": "",
+    "timestamp": "2022-10-20T11:28:57Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 34,
+  "fields": {
+    "user": 2,
+    "category": 4,
+    "price": "10.20",
+    "comment": "kfc",
+    "timestamp": "2022-10-20T11:29:22Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 35,
+  "fields": {
+    "user": 2,
+    "category": 7,
+    "price": "4.00",
+    "comment": "soap",
+    "timestamp": "2022-10-20T11:29:54Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 36,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "30.00",
+    "comment": "",
+    "timestamp": "2022-10-21T11:30:55Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 37,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "12.00",
+    "comment": "",
+    "timestamp": "2022-10-21T11:31:27Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 38,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "8.00",
+    "comment": "taxi",
+    "timestamp": "2022-10-21T11:31:47Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 39,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "27.81",
+    "comment": "",
+    "timestamp": "2022-10-22T11:32:15Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 40,
+  "fields": {
+    "user": 2,
+    "category": 1,
+    "price": "183.00",
+    "comment": "water, electricity, internet",
+    "timestamp": "2022-10-23T11:32:47Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 41,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "25.74",
+    "comment": "coffee sacks from Ozon",
+    "timestamp": "2022-10-23T11:33:42Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 42,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "7.00",
+    "comment": "",
+    "timestamp": "2022-10-24T11:34:19Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 43,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "14.00",
+    "comment": "for Mila",
+    "timestamp": "2022-10-24T11:34:40Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 44,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "13.02",
+    "comment": "medicine",
+    "timestamp": "2022-10-25T11:35:10Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 45,
+  "fields": {
+    "user": 2,
+    "category": 1,
+    "price": "20.00",
+    "comment": "Haircut",
+    "timestamp": "2022-10-26T11:35:45Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 46,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "18.84",
+    "comment": "",
+    "timestamp": "2022-10-26T11:36:45Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 47,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "27.20",
+    "comment": "for Mila",
+    "timestamp": "2022-10-26T11:37:12Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 48,
+  "fields": {
+    "user": 2,
+    "category": 1,
+    "price": "17.61",
+    "comment": "city transport",
+    "timestamp": "2022-10-27T11:37:42Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 49,
+  "fields": {
+    "user": 2,
+    "category": 3,
+    "price": "15.50",
+    "comment": "",
+    "timestamp": "2022-10-27T11:38:24Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 50,
+  "fields": {
+    "user": 2,
+    "category": 4,
+    "price": "21.50",
+    "comment": "pizza",
+    "timestamp": "2022-10-29T11:38:47Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 51,
+  "fields": {
+    "user": 2,
+    "category": 9,
+    "price": "19.89",
+    "comment": "",
+    "timestamp": "2022-10-29T11:39:29Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 52,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "45.65",
+    "comment": "",
+    "timestamp": "2022-10-30T11:40:05Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 53,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "20.00",
+    "comment": "for Mila",
+    "timestamp": "2022-11-23T11:40:46Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 54,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "14.77",
+    "comment": "",
+    "timestamp": "2022-11-01T11:41:09Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 55,
+  "fields": {
+    "user": 2,
+    "category": 2,
+    "price": "38.30",
+    "comment": "sec payment in a day",
+    "timestamp": "2022-11-01T09:42:05Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 56,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "5.22",
+    "comment": "",
+    "timestamp": "2022-11-01T11:42:56Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 57,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "10.00",
+    "comment": "cat food",
+    "timestamp": "2022-11-03T11:43:13Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 58,
+  "fields": {
+    "user": 2,
+    "category": 5,
+    "price": "9.00",
+    "comment": "cat toilet",
+    "timestamp": "2022-11-03T11:20:50Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 59,
+  "fields": {
+    "user": 2,
+    "category": 1,
+    "price": "88.00",
+    "comment": "for sport",
+    "timestamp": "2022-11-04T11:44:16Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 60,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "15.39",
+    "comment": "train ticket",
+    "timestamp": "2022-11-05T08:44:53Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 61,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "3.59",
+    "comment": "Vermintide game",
+    "timestamp": "2022-11-05T10:45:47Z"
+  }
+},
+{
+  "model": "my_expense.expense",
+  "pk": 62,
+  "fields": {
+    "user": 2,
+    "category": 6,
+    "price": "6.38",
+    "comment": "medicine",
+    "timestamp": "2022-11-05T11:46:30Z"
+  }
+}
+]
