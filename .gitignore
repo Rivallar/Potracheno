@@ -1,2 +1,8 @@
 db.sqlite3
 env_potracheno
+venv/
+.idea
+*.pyc
+*~
+__pycache__
+
