@@ -1,0 +1,215 @@
+/* general */
+body {
+    background-image: url("/static/images/stonks_meeting.jpg");
+    background-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+span {
+    display: inline-block;
+    width: 7em;
+    text-align: right;
+    padding-right: 3px;
+    font-weight: bold;
+    }
+
+a {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 8em;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    padding: 15px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #33b054 inset, 0 0 0 0 #33b054;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+    }
+
+a:hover {
+    box-shadow: 0 0 10px 0 #33b054 inset, 0 0 10px 4px #33b054;
+    color: #33b054;
+    }
+
+.center {
+    text-align: center;
+    }
+
+.smaller {
+    font-size: smaller;
+    }
+
+/* forms */
+form {
+    text-align: center;
+     }
+
+input[type=text], input[type=password], input[type=email] {
+    width: 55%;
+    margin-right: 8%;
+    border-radius: 5px;
+    border-width: 1.5px;
+    padding: 0.4em;
+    }
+
+input[type=submit], input[type=button] {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 13em;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    padding: 15px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #33b054 inset, 0 0 0 0 #33b054;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+    }
+
+input[type=submit]:hover, input[type=button]:hover {
+    box-shadow: 0 0 10px 0 #33b054 inset, 0 0 10px 4px #33b054;
+    color: #33b054;
+    }
+
+/* Dialog circles */
+#circle {
+    background-color: white;
+    box-sizing: border-box;
+    border-style: solid;
+    position: absolute;
+    opacity: .85;
+    border-radius: 10em;
+    border-width: 1px;
+    }
+
+#circle.first_asker {
+    width: 3%;
+    height: 6%;
+    left: 23%;
+    top: 45%;
+    }
+
+#circle.first_asker_small {
+	width: 2%;
+	height: 4%;
+	left: 20%;
+	top: 52%;
+    }
+
+#circle.first_answerer {
+    width: 3%;
+    height: 6%;
+    left: 74%;
+    top: 60%;
+    }
+
+#circle.first_answerer_small {
+    width: 2%;
+    height: 4%;
+    left: 79%;
+    top: 56%;
+    }
+
+#circle.sec_asker {
+    width: 1.5%;
+    height: 3%;
+    left: 32%;
+    top: 43%;
+    }
+
+#circle.sec_asker_small {
+    width: 1%;
+	height: 2%;
+	left: 30.5%;
+	top: 45.5%;
+    }
+
+#circle.sec_answerer {
+    width: 1.5%;
+    height: 3%;
+    left: 67.5%;
+	top: 47.5%;
+    }
+
+#circle.sec_answerer_small {
+    left: 69.5%;
+    top: 45.5%;
+	width: 1%;
+	height: 2%;
+    }
+
+
+
+#cloud {
+    background-color: white;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    opacity: .95;
+    position: absolute;
+    }
+
+#cloud.login_ask {
+    left: 27%;
+    top: 32%;
+    }
+
+#cloud.login_answer {
+    left: 47%;
+    top: 66%;
+    }
+
+#cloud.register_ask {
+    left: 34%;
+    top: 35%;
+    }
+
+#cloud.register_answer {
+    left: 47%;
+    top: 51%;
+    width: 25em;
+    }
+
+#cloud.password_reset_form_ask {
+    left: 27%;
+    top: 32%;
+    }
+
+#cloud.password_reset_form_answer {
+    left: 47%;
+    top: 66%;
+    }
+
+#cloud.password_reset_done_ask {
+    left: 34%;
+    top: 32%;
+    }
+
+#cloud.password_reset_confirm_ask {
+    left: 34%;
+    top: 30%;
+    }
+
+#cloud.password_reset_confirm_answer {
+    left: 57%;
+    top: 66%;
+    }
+
+#cloud.password_reset_complete_ask {
+    left: 34%;
+    top: 25%;
+    }

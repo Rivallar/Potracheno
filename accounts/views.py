@@ -16,13 +16,15 @@ def profile_view(request):
 def user_register(request):
 	if request.method == 'POST':
 		user_form = UserRegistrationForm(request.POST)
-		if user_form.is_valid:
+		if user_form.is_valid():
 			new_user = user_form.save(commit=False)
 			new_user.set_password(user_form.cleaned_data['password'])
 			new_user.save()
 			Profile.objects.create(user=new_user)
 			login(request, new_user)
 			return redirect('accounts:profile')
+		else:
+			return render(request, 'accounts/register.html', {'user_form': user_form})
 	else:
 		user_form = UserRegistrationForm()
 		return render(request, 'accounts/register.html', {'user_form': user_form})

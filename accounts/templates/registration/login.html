@@ -1,12 +1,37 @@
-<h1>Login view</h1>
-{% if form.errors %}
-	<p>Something went wrong. Check your input.</p>
-{% else %}
-	<p>Enter your credentails:</p>
-{% endif %}
-<form action="{% url 'accounts:login' %}" method="post">
-	{{ form.as_p }}
-	{% csrf_token %}
-	<input type="submit" value="register">
-</form>
-<a href="{% url 'accounts:password_reset' %}">Reset password</a>
+{% load static %}
+
+<!DOCTYPE html >
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title>Log-in</title>
+    <link href="{% static 'css/accounts.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div id="circle" class="first_asker_small"></div>
+    <div id="circle" class="first_asker"></div>
+    <div id="cloud" class="login_ask">
+        {% if form.errors %}
+            <h3>Такого пользователя не существует<br>
+                или введён неверный пароль.</h3>
+            <h4>Проверь пароль и логин</h4>
+        {% else %}
+            <h2 class="center">Кто ты?</h2>
+            <p>Укажи свои логин и пароль.</p>
+        {% endif %}
+    </div>
+    <div id="circle" class="first_answerer_small"></div>
+    <div id="circle" class="first_answerer"></div>
+    <div id="cloud" class="login_answer">
+        <h2 class="center">Привет!</h2>
+        <form action="{% url 'accounts:login' %}" method="post">
+            <p><span>Я: </span>{{ form.username }}</p>
+            <p><span>Мой пароль: </span>{{ form.password }}</p>
+            {% csrf_token %}
+            <input type="submit" value="Войти">
+            <a href="{% url 'accounts:password_reset' %}">Я всё забыл</a>
+        </form>
+    </div>
+
+</body>
+

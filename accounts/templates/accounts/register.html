@@ -1,7 +1,54 @@
-<h1>registration page</h1>
-<p>Use the form to register new user:</p>
-<form action="." method="post">
-	{{ user_form.as_p }}
-	{% csrf_token %}
-	<input type="submit" value="register">
-</form>
+{% load static %}
+
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8" >
+	<title>Logged-out</title>
+	<link href="{% static 'css/accounts.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div id="circle" class="sec_asker_small"></div>
+	<div id="circle" class="sec_asker"></div>
+    <div id="cloud" class="register_ask">
+		{% if user_form.errors %}
+			 <h2 class="center">Ошибка!</h2>
+		    {% for field in user_form %}
+        		{% for error in field.errors %}
+            		<p> {{ error }} </p>
+        		{% endfor %}
+    		{% endfor %}
+		{% else %}
+        	<h2 class="center">Расскажи немного о себе.</h2>
+		{% endif %}
+    </div>
+	<div id="circle" class="sec_answerer_small"></div>
+	<div id="circle" class="sec_answerer"></div>
+	<div id="cloud" class="register_answer">
+		<h2 class="center">Я</h2>
+		<form action="." method="post">
+			<p><span>Логин: </span>{{ user_form.username }}</p>
+			<p><span>Имя: </span>{{ user_form.first_name }}</p>
+			<p><span>Фамилия: </span>{{ user_form.last_name }}</p>
+			<p><span>Моя почта: </span>{{ user_form.email }}</p>
+			<p><span>Пароль: </span>{{ user_form.password }}</p>
+			<p><span>Пароль</br><i class="smaller">(eщё раз)</i>: </span>{{ user_form.password2 }}</p>
+			{% csrf_token %}
+			<input type="submit" value="Создать">
+		</form>
+	</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

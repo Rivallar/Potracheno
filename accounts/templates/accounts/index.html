@@ -1,4 +1,127 @@
-<h1>Hello!</h1>
-<p>This is index page.</p>
-<a href="{% url 'accounts:login' %}">Log-in</a>
-<a href="{% url 'accounts:register' %}">Register</a>
+{% load static %}
+
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Start page</title>
+   <style type="text/css">
+		body {
+			background-image: url("{% static 'images/stonks.png' %}");
+			background-size: 100%;
+			font-family: 'Montserrat', sans-serif;
+			}
+		#circle {
+			background-color: white;
+			box-sizing: border-box;
+			border-style: solid;
+			width: 3%;
+			height: 6%;
+			position: absolute;
+			left: 35%;
+			top: 30%;
+			opacity: .85;
+			border-radius: 10em;
+			}
+		#circle.small {
+			width: 2%;
+			height: 4%;
+			left: 32%;
+			top: 33%;
+			opacity: .75;
+			}
+		#circle.big {
+			width: 4%;
+			height: 8%;
+			left: 39%;
+			top: 25%;
+			opacity: .9;
+			}
+		#content {
+			position: absolute;
+			left: 45%;
+			top: 3%;
+			}
+		#cloud {
+			background-color: white;
+			box-sizing: border-box;
+			border-style: solid;
+			border-radius: 2em;
+			padding-left: 1em;
+			padding-right: 1em;
+			opacity: .95;
+			}
+		#cloud h2, h3 {
+			margin-block-start: 0.5em;
+			margin-block-end: 0.5em;
+			}
+		#cloud ul {
+			margin-block-start: 0.5em;
+			margin-block-end: 0.5em;
+			list-style-image: url('list-arrow.png');
+			padding-inline-start: 20px;
+			}
+
+		.center {
+			text-align: center;
+			}
+
+		.potracheno {
+			font-weight: bold;
+			font-style: italic;
+			letter-spacing: 1px;
+			font-size: bigger;
+			text-decoration: underline;
+			color: #33b054;
+			}
+		#content a {
+			text-decoration: none;
+			text-align: center;
+			display: inline-block;
+			width: 8em;
+			border-style: solid;
+			border-width: 1px;
+			background-color: white;
+			padding: 15px 30px;
+			margin: 10px 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 40px 40px #33b054 inset, 0 0 0 0 #33b054;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+			letter-spacing: 2px;
+			color: white;
+			transition: .15s ease-in-out;
+			}
+
+		#content a:hover {
+			box-shadow: 0 0 10px 0 #33b054 inset, 0 0 10px 4px #33b054;
+			color: #33b054;
+			}
+   </style>
+</head>
+
+<body>
+	<div id="circle" class="small"></div>
+	<div id="circle"></div>
+	<div id="circle" class="big"></div>
+	<div id="content">
+		<div id="cloud">
+			<h2 class="center">Привет!</h2>
+			<p>Нас зовут <span class="potracheno">Potracheno</span>, и мы помогаем простым работягам учитывать их финансовые расходы.</p>
+			<h3>Если ты:</h3>
+			<ul>
+				<li>в шоке от того, как быстро уходит с карточки зарплата</li>
+				<li>припоминаешь, что тебе должны мильён денег, но не помнишь кто именно</li>
+				<li>тебе лень считать кто сколько скидывался на шашлыки, вспоминать кто не пил, а кто и вовсе веган(!)</li>
+			</ul>
+			<h2 class="center">Тогда тебе однозначно к нам!</h2>
+			<p>Мы не полезем к тебе в кошелёк и не заставим вводить данные твоей карточки (<i>честно-честно!</i>).<br>
+				Просто зарегистрируйся и не забывай вносить свои траты через удобный telegram-bot/наш сайт,<br>
+				а мы уже покажем, откуда было совершено нападение на твой кошелёк <img src="{% static 'images/smirk-smile.png' %}"><br>
+				<i>(возможно благодаря нам ты даже бросишь пить/курить и пересядешь на велосипед с такими-то ценами!)</i>
+		</div>
+		<p class="center"><a href="{% url 'accounts:login' %}">Вход</a>
+		<a href="{% url 'accounts:register' %}">Регистрация</a></p>
+	</div>
+</body>
+</html>

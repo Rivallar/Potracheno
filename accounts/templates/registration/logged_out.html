@@ -1,3 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Logged-out</title>
+   <style>
+        body {
+            background-image: url("{% static 'images/not_stonks.png' %}");
+            background-size: 100%;
+            font-family: 'Montserrat', sans-serif;
+            }
+        #buttons_block {
+            position: absolute;
+            right: 4.5%;
+            bottom: 38%;
+            width: 40%;
+            }
+        #buttons_block a {
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            width: 8em;
+            border-style: solid;
+            border-width: 1px;
+            background-color: white;
+            padding: 15px 30px;
+            margin: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 40px 40px #33b054 inset, 0 0 0 0 #33b054;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+            transition: .15s ease-in-out;
+            }
+        #buttons_block a:hover {
+            box-shadow: 0 0 10px 0 #33b054 inset, 0 0 10px 4px #33b054;
+            color: #33b054;
+            }
+   </style>
+</head>
+<body>
+	<div id="buttons_block">
+		<a href="{% url 'accounts:login' %}">Вход</a>
+	</div>
+</body>
+</html>
+
+
+
+
+
+<!--
+
 <h1>Logout view</h1>
 <p>You successfully performed logout</p>
 <p>You can <a href="{% url 'accounts:login' %}">log-in</a>again</p>
