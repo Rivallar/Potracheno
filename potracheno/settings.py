@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_REDIRECT_URL = 'accounts:profile'
+LOGIN_REDIRECT_URL = 'my_expense:profile'
 LOGIN_URL = 'accounts:login'
 LOGOUT_URL = 'accounts:logout'
 

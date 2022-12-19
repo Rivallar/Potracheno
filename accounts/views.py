@@ -9,10 +9,6 @@ from my_expense.models import Profile
 def index_view(request):
 	return render(request, 'accounts/index.html')
 
-@login_required
-def profile_view(request):
-	return render(request, 'accounts/profile.html')
-
 def user_register(request):
 	if request.method == 'POST':
 		user_form = UserRegistrationForm(request.POST)
@@ -22,7 +18,7 @@ def user_register(request):
 			new_user.save()
 			Profile.objects.create(user=new_user)
 			login(request, new_user)
-			return redirect('accounts:profile')
+			return redirect('my_expense:profile')
 		else:
 			return render(request, 'accounts/register.html', {'user_form': user_form})
 	else:

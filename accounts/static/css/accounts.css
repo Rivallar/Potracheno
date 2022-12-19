@@ -213,3 +213,18 @@ input[type=submit]:hover, input[type=button]:hover {
     left: 34%;
     top: 25%;
     }
+
+#cloud.password_change_confirm_ask {
+    left: 34%;
+    top: 30%;
+    }
+
+#cloud.password_change_confirm_answer {
+    left: 57%;
+    top: 66%;
+    }
+
+#cloud.password_change_complete_ask {
+    left: 34%;
+    top: 25%;
+    }

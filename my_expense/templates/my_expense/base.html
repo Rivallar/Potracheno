@@ -1,9 +1,184 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{% block title %}{% endblock %}</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+	<link href="https://fonts.cdnfonts.com/css/pricedown" rel="stylesheet">
+	<style>
+		#top_panel {
+			width: 100%;
+			height: 10%;
+			background: linear-gradient(45deg, cyan, 10%, teal, 95%, black);
+			position: absolute;
+			top: 0;
+			left: 0;
+			box-sizing: border-box;
+			}
+		#top_panel img {
+			height: 100%;
+			float: left;
+			}
+		#top_panel ul {
+			display: inline-block;
+			list-style-type: none;
+			margin-bottom: 5px;
+			position: absolute;
+			right: 0%;
+			bottom: 0%;
+			}
+		#top_panel li {
+			float: left;
+			}
+		#top_panel a {
+			text-decoration: none;
+			text-align: center;
+			display: inline-block;
+			width: 8em;
+			border-style: solid;
+			border-width: 1px;
+			background-color: white;
+			padding: 5px 10px;
+			margin: 5px 5px;
+			box-shadow: 0 0 40px 40px teal inset, 0 0 0 0 teal;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+			color: #dfbf11;
+			transition: .15s ease-in-out;
+			}
+		#top_panel a:hover {
+			box-shadow: 0 0 10px 0 #dfbf11 inset, 0 0 10px 4px #dfbf11;
+			color: #33b054;
+			}
+		#top_panel a.red:hover {
+			box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
+			color: red;
+			}
+		.logo {
+			float: left;
+			color: #8f0e0e;
+			font-family: 'Pricedown Bl', sans-serif;
+			font-style: italic;
+			font-weight: bold;
+			font-size: 300%;
+			text-shadow: 0px 1px;
+			letter-spacing: 0.25em;
+			margin-top: 15px;
+			margin-left: 20px;
+			}
+		.greeting {
+			font-family: 'Montserrat', sans-serif;
+			color: #dfbf11;
+			font-style: italic;
+			text-align: right;
+			margin-top: 8px;
+			margin-right: 10px;
+			}
+
+		#sidebar {
+			background: linear-gradient(235deg, teal, 65%, DarkSlateGrey, black);
+			position: absolute;
+			left: 0;
+			top: 12%;
+			width: 15%;
+			}
+		#sidebar ul {
+			margin: 0;
+			padding: 0;
+			color: #dfbf11;
+			}
+		#sidebar ul li {
+			list-style-type: none;
+			padding-left: 5px;
+			margin-bottom: 5px;
+			display: block;
+			color: #dfbf11;
+			font-family: 'Montserrat', sans-serif;
+			font-style: italic;
+			}
+		/* a href with animation */
+		.border-button {
+			text-decoration: none;
+			display: inline-block;
+			padding: 20px 10px;
+			margin: 5px 0 5px 0;
+			position: relative;
+			color: #dfbf11;
+			border: 1px solid rgba(255, 255, 255, .4);
+			background: none;
+			font-weight: 300;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			width: 90%;
+			transition-property: letter-spacing, font-weight;
+			transition-duration: 0.3s;
+			}
+		.border-button:before, .border-button:after {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			opacity: 0;
+			box-sizing: border-box;
+			}
+		.border-button:before {
+			bottom: 0;
+			left: 0;
+			border-left: 1.8px solid #dfbf11;;
+			border-top: 1.8px solid #dfbf11;;
+			transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+			}
+		.border-button:after {
+			top: 0;
+			right: 0;
+			border-right: 1.8px solid #dfbf11;;
+			border-bottom: 1.8px solid #dfbf11;;
+			transition: 0s ease opacity .4s, .2s ease width, .2s ease height .2s;
+			}
+		.border-button:hover:before,
+		.border-button:hover:after {
+			height: 100%;
+			width: 100%;
+			opacity: 1;
+			}
+		.border-button:hover:before {
+			transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
+			}
+		.border-button:hover:after {
+			transition: 0s ease opacity .4s, .2s ease height .4s, .2s ease width .6s;
+			}
+		.border-button:hover {
+			font-weight: 600;
+			background-color: teal;
+			background: rgba(255, 255, 255, .2);
+			letter-spacing: 2.5px;
+			}
+	</style>
 </head>
 <body>
-	{% block content %}{% endblock %}
+	<div id="top_panel">
+		<img src="{% static '/images/favicon.png' %}">
+		<h1 class="logo">potracheno</h1>
+		<h2 class="greeting">Привет, {{ user.username }}!</h2>
+		<ul>
+			<li><a href="{% url 'accounts:logout' %}">logout</a></li>
+			<li><a href="{% url 'accounts:password_change' %}">change pass</a></li>
+			<li><a href="#" class="red">delete profile</a></li>
+		</ul>
+	</div>
+	<div id="sidebar">
+		<ul>
+			<li><a href="#" class="border-button">Добавить расходы</a></li>
+			<li><a href="#" class="border-button">История расходов</a></li>
+			<li><a href="#" class="border-button">Немного статистики</a></li>
+			<li><a href="#" class="border-button">Долги</a></li>
+			<li><a href="#" class="border-button">Party hard</a></li>
+			<li><a href="#" class="border-button">Настройки профиля</a></li>
+		</ul>
+	</div>
+	<div>
+		{% block content %}{% endblock %}
+	</div>
 </body>
 </html>
