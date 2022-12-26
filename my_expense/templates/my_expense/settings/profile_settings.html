@@ -1,0 +1,36 @@
+{% extends 'my_expense/base.html' %}
+{% load static %}
+{% block title %}Мои настройки{% endblock %}
+{% block content %}
+    <h1>Настройки профиля:</h1>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Изменить">
+    </form>
+    <hr>
+    <h1 class="with_hint">Категории твоих расходов:</h1>
+    <p class="smaller hint">(перетащи, чтобы изменить порядок)</p>
+    {% for cat in request.user.profile.expense_categories.all %}
+        <div class="cat_plate">
+            <span class="category with_hint">{{ cat }}</span><br>
+            {% if cat.category_group %}
+                <span class="smaller hint">{{ cat.category_group }}</span>
+            {% else %}
+                <span class="smaller hint">&nbsp;</span>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>Пока ничего нет. Добавь категории, по которым ты хочешь отслеживать траты.</p>
+    {% endfor %}
+    <div id="icon_bar">
+        <a class="icons" href="{% url 'my_expense:add_categories' %}">
+            <img class="icons" src="{% static '/images/icons/add.png' %}"><br>
+            <span class="smaller hint">Добавить</span>
+        </a>
+        <a class="icons" href="#">
+            <img class="icons" src="{% static '/images/icons/delete.png' %}"><br>
+            <span class="smaller hint">Удалить</span>
+        </a>
+    </div>
+{% endblock %}

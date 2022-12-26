@@ -6,6 +6,27 @@
 	<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
 	<link href="https://fonts.cdnfonts.com/css/pricedown" rel="stylesheet">
 	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			}
+		.smaller {
+    		font-size: smaller;
+    		}
+    	.hint {
+    		font-style: italic;
+    		margin-top: 0;
+    		}
+    	.with_hint {
+    		margin-bottom: 0;
+    		}
+    	.center {
+    		text-align: center;
+    		}
+    	.counter {
+    		display: inline-block;
+    		width: 1em;
+    		}
+
 		#top_panel {
 			width: 100%;
 			height: 10%;
@@ -30,7 +51,7 @@
 		#top_panel li {
 			float: left;
 			}
-		#top_panel a {
+		#top_panel a.button {
 			text-decoration: none;
 			text-align: center;
 			display: inline-block;
@@ -46,7 +67,7 @@
 			color: #dfbf11;
 			transition: .15s ease-in-out;
 			}
-		#top_panel a:hover {
+		#top_panel a.button:hover {
 			box-shadow: 0 0 10px 0 #dfbf11 inset, 0 0 10px 4px #dfbf11;
 			color: #33b054;
 			}
@@ -154,17 +175,182 @@
 			background: rgba(255, 255, 255, .2);
 			letter-spacing: 2.5px;
 			}
+		#content_block {
+			position: absolute;
+			left: 17%;
+			top: 12%;
+			}
+		/* forms */
+		form {
+			margin-left: 2em;
+			}
+		label {
+			display: inline-block;
+			width: 5em;
+			padding-right: 5px;
+			font-style: italic;
+			font-weight: bolder;
+			}
+		form.add_cat label {
+			width: auto;
+			margin-left: 1em;
+			}
+		form.add_cat p.invisible label {
+			opacity: 0;
+			}
+		input[type=text], input[type=email] {
+			width: 20em;
+			padding: 3px 4px;
+			}
+		input[type=submit] {
+			text-align: center;
+			width: 10em;
+			border: 1px solid rgba(255, 255, 255, .4);
+			background-image: linear-gradient(45deg, #6ab1d7 5%, teal 100%);
+			background-position: 100% 0;
+  			background-size: 200% 200%;
+			padding: 8px 10px;
+			margin: 5px 5px 5px 7.5em;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+			font-size: 100%;
+			color: #dfbf11;
+			letter-spacing: 2px;
+			transition: .15s ease-in-out;
+			}
+		input[type=submit].add_cat {
+			margin: 5px;
+			}
+
+		input[type=submit]:hover {
+			letter-spacing: 2.5px;
+			background-position: 0 0;
+			}
+
+		/* icon bar */
+		#icon_bar {
+    		text-align: center;
+    		margin-top: 3em;
+    		}
+    	#icon_bar a {
+    		text-decoration: none;
+    		display: inline-block;
+    		margin: 0 2em;
+    		}
+    	#icon_bar img {
+    		width: 3.5em;
+    		height: 3.5em;
+    		transition: .15s ease-in-out;
+    		}
+    	#icon_bar img:hover {
+    		width: 4.8em;
+    		height: 4.8em;
+    		}
+
+		/* Messages */
+		.messages {
+			position: absolute;
+			top: 12%;
+			right: 0;
+			}
+		ul.messages {
+			list-style-type: none;
+			}
+		ul.messages li {
+			position: static;
+			display: block;
+			box-sizing: border-box;
+			color: #dfbf11;
+			font-size: 120%;
+			font-style: italic;
+			border-style: solid;
+			border-width: 1px;
+			background-image: linear-gradient(45deg, teal 99%, #6ab1d7 1%);
+			padding: 15px 20px;
+			margin-right: 1em;
+			transform: translateX(150%);
+  			animation: ani 7s forwards;
+			}
+		ul.messages li.error {
+			background-image: linear-gradient(45deg, DarkRed, #d60d0d);
+			}
+		@keyframes ani {
+  			0% {transform: translateX(150%);}
+  			25% {transform: translateY(0);
+  				opacity: 1}
+  			70% {transform: translateY(0);
+  				opacity: 1}
+  			100% {transform: translateY(0);
+  				opacity: 0}
+			}
+		ul.messages li a {
+			text-decoration: none;
+			font-size: 110%;
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0.4em;
+			color: #8f0e0e;
+			}
+		/* Spare categories plates */
+		.cat_plate {
+			display: inline-block;
+			text-align: center;
+			margin-right: 15px;
+			}
+		.category {
+			display: inline-block;
+			padding: 5px 10px;
+			margin-top: 15px;
+			color: #dfbf11;
+			font-size: 110%;
+			border: 1px solid rgba(255, 255, 255, .4);
+			border-radius: 5px;
+			background-color: teal;
+			transition: .15s ease-in-out;
+		}
+		.category:hover {
+			padding: 8px 13px;
+			font-size: 115%;
+			}
+		.item {
+			border-style: solid;
+			border-width: 1px;
+			display: inline-block;
+			margin: 1em;
+
+			}
+		input[type=checkbox] {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+			}
+		input[type=checkbox]+label {
+			user-select: none;
+			}
+		input[type=checkbox]+label::before {
+			content: '';
+			width: 100%;
+			background-color: teal;
+			color: gold;
+			text-align: center;
+			padding: 5px 10px;
+			box-sizing: border-box;
+			}
+		input[type=checkbox]:checked+label {
+			background-color: #0b76ef;
+			}
 	</style>
 </head>
 <body>
 	<div id="top_panel">
-		<img src="{% static '/images/favicon.png' %}">
+		<a href="{% url 'my_expense:profile' %}"><img src="{% static '/images/favicon.png' %}"></a>
 		<h1 class="logo">potracheno</h1>
 		<h2 class="greeting">Привет, {{ user.username }}!</h2>
 		<ul>
-			<li><a href="{% url 'accounts:logout' %}">logout</a></li>
-			<li><a href="{% url 'accounts:password_change' %}">change pass</a></li>
-			<li><a href="#" class="red">delete profile</a></li>
+			<li><a class="button" href="{% url 'accounts:logout' %}">logout</a></li>
+			<li><a class="button" href="{% url 'accounts:password_change' %}">change pass</a></li>
+			<li><a class="button red" href="#">delete profile</a></li>
 		</ul>
 	</div>
 	<div id="sidebar">
@@ -174,11 +360,20 @@
 			<li><a href="#" class="border-button">Немного статистики</a></li>
 			<li><a href="#" class="border-button">Долги</a></li>
 			<li><a href="#" class="border-button">Party hard</a></li>
-			<li><a href="#" class="border-button">Настройки профиля</a></li>
+			<li><a href="{% url 'my_expense:profile_settings' %}" class="border-button">Настройки профиля</a></li>
 		</ul>
 	</div>
-	<div>
+	<div id="content_block">
 		{% block content %}{% endblock %}
 	</div>
+	{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+				<li class="{{ message.tags }}">
+					{{ message|safe }}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 </body>
 </html>
