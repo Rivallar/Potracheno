@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8" >
+	<title>Delete account</title>
+	<link href="{% static 'css/accounts.css' %}" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+</head>
+<body>
+	<div id="circle" class="sec_asker_small"></div>
+	<div id="circle" class="sec_asker"></div>
+	<div id="cloud" class="delete_ask">
+		<h2>Ты уверен, что хочешь удалить аккаунт "{{ object }}"?</h2>
+		<p>Вся информация о твоих расходах и долгах будет стёрта.</p>
+	</div>
+	<div id="circle" class="first_answerer_small"></div>
+	<div id="circle" class="first_answerer"></div>
+	<div id="cloud" class="delete_answer">
+		<form method="post">
+			{% csrf_token %}
+			<input type="submit" class="delete" value="ДА" />
+		</form>
+	</div>
+
+
+</body>
+</html>

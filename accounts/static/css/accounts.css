@@ -77,9 +77,17 @@ input[type=submit], input[type=button] {
     transition: .15s ease-in-out;
     }
 
+input[type=submit].delete {
+    box-shadow: 0 0 40px 40px darkred inset, 0 0 0 0 darkred;
+    }
+
 input[type=submit]:hover, input[type=button]:hover {
     box-shadow: 0 0 10px 0 #33b054 inset, 0 0 10px 4px #33b054;
     color: #33b054;
+    }
+input[type=submit].delete:hover {
+    box-shadow: 0 0 15px 0 red inset, 0 0 15px 4px red;
+    color: red;
     }
 
 /* Dialog circles */
@@ -227,4 +235,14 @@ input[type=submit]:hover, input[type=button]:hover {
 #cloud.password_change_complete_ask {
     left: 34%;
     top: 25%;
+    }
+
+#cloud.delete_ask {
+    left: 34%;
+    top: 35%;
+    }
+#cloud.delete_answer {
+    right: 27%;
+    top: 68%;
+     border-radius: 1em;
     }

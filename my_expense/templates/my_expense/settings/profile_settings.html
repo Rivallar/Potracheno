@@ -2,35 +2,109 @@
 {% load static %}
 {% block title %}Мои настройки{% endblock %}
 {% block content %}
-    <h1>Настройки профиля:</h1>
-    <form action="." method="post">
-        {{ user_form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Изменить">
-    </form>
+    <div id="user_form">
+        <h1>Настройки профиля:</h1>
+        <form action="." method="post">
+            {{ user_form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Изменить">
+        </form>
+    </div>
+    <div id="del_div">
+        <a class="icons" href="{% url 'accounts:delete_account' request.user.id %}">
+            <img id="del_user_img" title="Удалить аккаунт" src="{% static '/images/icons/delete.png' %}"><br>
+            <span class="smaller hint">Удалить профиль</span>
+        </a>
+    </div>
     <hr>
     <h1 class="with_hint">Категории твоих расходов:</h1>
     <p class="smaller hint">(перетащи, чтобы изменить порядок)</p>
-    {% for cat in request.user.profile.expense_categories.all %}
-        <div class="cat_plate">
-            <span class="category with_hint">{{ cat }}</span><br>
-            {% if cat.category_group %}
-                <span class="smaller hint">{{ cat.category_group }}</span>
-            {% else %}
-                <span class="smaller hint">&nbsp;</span>
-            {% endif %}
+    {% if expense_categories %} <!-- Category order editing mode -->
+        <div>
+            <ul id="sortable">
+                {% for cat in expense_categories %}
+                    <li data-id="{{ cat.id }}">
+                        <span class="category with_hint">{{ cat }}</span><br>
+                            {% if cat.category_group %}
+                                <span class="smaller hint">{{ cat.category_group }}</span>
+                            {% else %}
+                                <span class="smaller hint">&nbsp</span>
+                            {% endif %}
+                    </li>
+                {% empty %}
+                    <p>Пока ничего нет. Добавь категории, по которым ты хочешь отслеживать траты.</p>
+                {% endfor %}
+            </ul>
         </div>
-    {% empty %}
-        <p>Пока ничего нет. Добавь категории, по которым ты хочешь отслеживать траты.</p>
-    {% endfor %}
-    <div id="icon_bar">
-        <a class="icons" href="{% url 'my_expense:add_categories' %}">
-            <img class="icons" src="{% static '/images/icons/add.png' %}"><br>
-            <span class="smaller hint">Добавить</span>
-        </a>
-        <a class="icons" href="#">
-            <img class="icons" src="{% static '/images/icons/delete.png' %}"><br>
-            <span class="smaller hint">Удалить</span>
-        </a>
-    </div>
+        <div id="icon_bar">
+            <a class="icons" href="{% url 'my_expense:add_categories' %}">
+                <img class="icons" src="{% static '/images/icons/add.png' %}"><br>
+                <span class="smaller hint">Добавить</span>
+            </a>
+            {% if request.user.profile.categories.count > 0 %}
+                <a class="icons" href="{% url 'my_expense:edit_categories' %}">
+                    <img class="icons" src="{% static '/images/icons/edit.png' %}"><br>
+                    <span class="smaller hint">Редактировать</span>
+                </a>
+            {% endif %}
+            <a class="icons" href="{% url 'my_expense:delete_categories' %}">
+                <img class="icons" src="{% static '/images/icons/delete.png' %}"><br>
+                <span class="smaller hint">Удалить</span>
+            </a>
+        </div>
+    {% else %} <!-- Category deletion mode -->
+        <form action="{% url 'my_expense:delete' %}" method="post">
+            {% for form in delete_formset %}
+                <div class="del_cat">
+                    {{ form }}
+                    <span class="category with_hint">{{ form.title.value }}</span><br>
+                    {% if form.category_group.value %}
+                        <span class="smaller hint">{{ form.category_group.value }}</span>
+                    {% else %}
+                        <span class="smaller hint">&nbsp</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {{ delete_formset.management_form }}
+            {% csrf_token %}
+            <p class="center"><input type="submit" class="delete_button" value="Удалить"></p>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block domready %}
+
+<!-- checkbox manipulation in delete_formset -->
+    var plates = document.getElementsByClassName("del_cat");
+    for (var i = 0; i < plates.length; i++) {
+        plates[i].addEventListener('click', function(event) {
+            var checkbox = $(event.currentTarget).children('input[name$="check"]');
+            if (checkbox.prop("checked") == false) {
+                checkbox.prop("checked", true);
+                $(event.currentTarget).children('.category').addClass("delete");
+                    }
+            else {
+                checkbox.prop("checked", false);
+                $(event.currentTarget).children('.category').removeClass("delete");
+                    }
+                }
+            )
+        }
+
+<!-- changing categories order -->
+    $("#sortable").sortable({
+        stop: function(event, ui) {
+            cat_order = {};
+            $("#sortable").children().each(function(){
+                cat_order[$(this).data('id')] = $(this).index();
+            });
+    $.ajax({
+        type: 'POST',
+        url: '{% url "my_expense:category_order" %}',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify(cat_order)
+        });
+       }
+    });
 {% endblock %}

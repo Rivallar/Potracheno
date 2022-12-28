@@ -1,4 +1,5 @@
 {% extends 'my_expense/base.html' %}
+{% load static %}
 {% block title %}Мои настройки{% endblock %}
 {% block content %}
     <h1>Добавь новые категории расходов для таблицы</h1>
@@ -10,13 +11,25 @@
         группу <i><b>"Еда"</b></i>.<br>
         Так статистика будет вестись как по каждой категории так и по группе в целом.</p>
     <p><i>P.S. Всего можно создать <u>до 10-ти категорий</u>. Тебе же этого хватит, да?</i></p><br>
-    <form class ="add_cat" action="." method="post">
-        {% for form in formset %}
-            <p {% if not forloop.first %} class="invisible" {% endif %}>
-                <span class="counter">{{ forloop.counter }}:</span> {{ form }}</p>
-        {% endfor %}
-        {{ formset.management_form }}
-        {% csrf_token %}
-        <p class="center"><input class="add_cat" type="submit" value="Добавить"></p>
-    </form>
+    {% if formset.forms %}
+        <form class ="add_cat" action="{% url 'my_expense:edit_categories' %}" method="post">
+            {% for form in formset %}
+                <p {% if not forloop.first %} class="invisible" {% endif %}>
+                    <span class="counter">{{ forloop.counter }}:</span> {{ form }}</p>
+            {% endfor %}
+            {{ formset.management_form }}
+            {% csrf_token %}
+            <p class="center"><input class="add_cat" type="submit" value="{{ button_name }}"></p>
+        </form>
+    {% else %}
+        <h3>Похоже ты израсходовал весь свой лимит в 10 категорий.</h3>
+        <p>Нужно что-то удалить, чтобы добавить новую категорию.</p>
+        <div id="icon_bar">
+            <a class="icons" href="{% url 'my_expense:delete_categories' %}">
+                <img class="icons" src="{% static '/images/icons/delete.png' %}"><br>
+                <span class="smaller hint">Удалить</span>
+            </a>
+        </div>
+    {% endif %}
+
 {% endblock %}

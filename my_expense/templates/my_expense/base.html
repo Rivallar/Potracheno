@@ -5,6 +5,10 @@
 	<title>{% block title %}{% endblock %}</title>
 	<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
 	<link href="https://fonts.cdnfonts.com/css/pricedown" rel="stylesheet">
+	<script src="{% static 'js/jQuery-3.6.3.min.js' %}"></script>
+    	<!-- src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> -->
+	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    	<!-- src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"> -->
 	<style>
 		body {
 			font-family: 'Montserrat', sans-serif;
@@ -117,6 +121,7 @@
 			font-family: 'Montserrat', sans-serif;
 			font-style: italic;
 			}
+
 		/* a href with animation */
 		.border-button {
 			text-decoration: none;
@@ -180,10 +185,18 @@
 			left: 17%;
 			top: 12%;
 			}
+		#user_form {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: auto;
+			}
 		/* forms */
 		form {
 			margin-left: 2em;
+			width: auto;
 			}
+
 		label {
 			display: inline-block;
 			width: 5em;
@@ -221,10 +234,21 @@
 		input[type=submit].add_cat {
 			margin: 5px;
 			}
+		input[type=submit].delete_button {
+			background-image: linear-gradient(45deg, DarkRed, #d60d0d);
+			width: auto;
+			color: white;
+			border-radius: 5px;
+			margin: 5px;
+			}
 
 		input[type=submit]:hover {
 			letter-spacing: 2.5px;
 			background-position: 0 0;
+			}
+		input[type="checkbox"] {
+			opacity: 0;
+			position: absolute;
 			}
 
 		/* icon bar */
@@ -236,15 +260,35 @@
     		text-decoration: none;
     		display: inline-block;
     		margin: 0 2em;
+    		color: black;
+    		}
+    	#del_div {
+    		position: absolute;
+    		left: 27em;
+    		top: 9em;
+    		text-align: center;
+    		}
+    	#del_div a {
+    		text-decoration: none;
+    		color: black;
     		}
     	#icon_bar img {
-    		width: 3.5em;
-    		height: 3.5em;
+    		width: 3em;
+    		height: 3em;
     		transition: .15s ease-in-out;
     		}
     	#icon_bar img:hover {
-    		width: 4.8em;
-    		height: 4.8em;
+    		width: 4em;
+    		height: 4em;
+    		}
+    	#del_user_img {
+    		width: 4em;
+    		height: 4em;
+    		transition: .15s ease-in-out;
+    		}
+    	#del_user_img:hover {
+    		width: 4.5em;
+    		height: 4.5em;
     		}
 
 		/* Messages */
@@ -268,6 +312,7 @@
 			background-image: linear-gradient(45deg, teal 99%, #6ab1d7 1%);
 			padding: 15px 20px;
 			margin-right: 1em;
+			margin-bottom: 1em;
 			transform: translateX(150%);
   			animation: ani 7s forwards;
 			}
@@ -292,6 +337,7 @@
 			right: 0.4em;
 			color: #8f0e0e;
 			}
+
 		/* Spare categories plates */
 		.cat_plate {
 			display: inline-block;
@@ -313,33 +359,38 @@
 			padding: 8px 13px;
 			font-size: 115%;
 			}
-		.item {
+
+		/* .item {
 			border-style: solid;
 			border-width: 1px;
 			display: inline-block;
 			margin: 1em;
+			} */
 
+		/* sortable list */
+		ul.ui-sortable {
+			list-style-type: none;
 			}
-		input[type=checkbox] {
-			position: absolute;
-			z-index: -1;
-			opacity: 0;
-			}
-		input[type=checkbox]+label {
-			user-select: none;
-			}
-		input[type=checkbox]+label::before {
-			content: '';
-			width: 100%;
-			background-color: teal;
-			color: gold;
+		li.ui-sortable-handle {
+			display: inline-block;
 			text-align: center;
-			padding: 5px 10px;
-			box-sizing: border-box;
+			margin-right: 15px;
 			}
-		input[type=checkbox]:checked+label {
-			background-color: #0b76ef;
+
+		/* deletable category plates */
+		.del_cat {
+			display: inline-block;
+			margin-right: 15px;
+			text-align: center;
 			}
+		.delete {
+			box-shadow: 0 0 5px 5px red;
+			padding: 8px 13px;
+			font-size: 115%;
+			border: none;
+			color: white;
+			}
+
 	</style>
 </head>
 <body>
@@ -350,7 +401,7 @@
 		<ul>
 			<li><a class="button" href="{% url 'accounts:logout' %}">logout</a></li>
 			<li><a class="button" href="{% url 'accounts:password_change' %}">change pass</a></li>
-			<li><a class="button red" href="#">delete profile</a></li>
+			<li><a class="button red" href="{% url 'accounts:delete_account' request.user.id %}">delete profile</a></li>
 		</ul>
 	</div>
 	<div id="sidebar">
@@ -375,5 +426,11 @@
 			{% endfor %}
 		</ul>
 	{% endif %}
+	<script>
+        $(document).ready(function() {
+            {% block domready %}
+            {% endblock %}
+        });
+    </script>
 </body>
 </html>

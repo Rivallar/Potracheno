@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import BaseModelFormSet
 from django.forms import modelformset_factory
 
 from .models import Category
@@ -12,5 +13,13 @@ class UserEditForm(forms.Form):
 	phone = forms.CharField(label='Телефон', required=False)
 
 
-CategoryFormset = modelformset_factory(Category, fields=('title', 'category_group'), extra=10,
-                                       labels={'title': 'Категория', 'category_group': 'Группа'})
+# Hidden formset to delete Categories.
+class BaseDeleteCategoryFormset(BaseModelFormSet):
+	def add_fields(self, form, index):
+		super().add_fields(form, index)
+		form.fields['check'] = forms.BooleanField(label='', required=False)     # checkbox is hidden, controlled by javascript
+
+DeleteCategoryFormset = modelformset_factory(Category, formset=BaseDeleteCategoryFormset, extra=0,
+                                             fields=('title', 'category_group', 'id'),
+                                             widgets={'title': forms.HiddenInput,   # field values shown as text
+                                                      'category_group': forms.HiddenInput})

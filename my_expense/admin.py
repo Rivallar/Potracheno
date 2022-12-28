@@ -7,11 +7,11 @@ from .models import Category, Profile, Expense
 # Register your models here.
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-	list_display = ('id', 'category_group', 'title',)
-	list_filter = ('category_group', )
-	search_fields = ('title', 'category_group')
-	ordering = ('category_group', 'title',)
-	list_editable = ['category_group', 'title']
+	list_display = ('profile', 'order', 'category_group', 'title')
+	list_filter = ('profile', 'category_group', )
+	search_fields = ('profile', 'title', 'category_group')
+	ordering = ('order', 'category_group', 'title',)
+	list_editable = ['category_group', 'title', 'order']
 	
 	
 class ProfileInline(admin.StackedInline):
