@@ -1,3 +1,83 @@
 {% extends 'my_expense/base.html' %}
-
+{% load my_expense_tags %}
 {% block title %}Profile{% endblock%}
+{% block content %}
+    <h1>Список расходов для траблшутинга. Потом удалю</h1>
+    <ul>
+        {% for expense in expense_list %}
+            <li>{{ expense.timestamp }} - {{ expense.category }} -
+                {{ expense.price }} - {{ expense.comment }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h1>Таблица</h1>
+        <table class="expense_table">
+            <caption><h2>Расходы за этот месяц</h2></caption>
+            <tr>    <!-- Two header rows to display cat. names and cat. groupnames -->
+                <th rowspan="3">{% now "M Y" %}</th>
+                {% for category in user_expense_categories %}
+                    {% if not category.category_group %}
+                        <th colspan="2" rowspan="2">{{ category.title }}</th>
+                    {% else %}
+                        {% with forloop.counter as cat_order %}
+                            {% if cat_order in info_for_category_group_table_header.keys %}
+                                <th colspan="{% dict_value info_for_category_group_table_header cat_order %}">{{ category.category_group }}</th>
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                {% endfor %}
+                <th rowspan="3">Всего за день</th>
+            </tr>
+            <tr>
+                {% for category in user_expense_categories %}
+                    {% if category.category_group %}
+                        <th colspan="2">{{ category.title }}</th>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for category in user_expense_categories %}
+                    <td>Сумма</td>
+                    <td>Комментарий</td>
+                {% endfor %}
+            </tr>
+            {% for date in date_range %} <!-- Each date from range is a row of a table -->
+                <tr>
+                    <td>{{ date.day }}</td>
+                    {% if date in expenses_by_day.keys %}    <!-- result is result={date1:{category1:[price, comment], cat2:[]}, date2{}} -->
+                        {% dict_value expenses_by_day date as day_dict %} <!-- Accessing inner dictionary. Key is date -->
+                        {% for category in user_expense_categories %}
+                            {% if category.title in day_dict.keys %}
+                                {% dict_value day_dict category.title as expense %} <!-- Accessing inner dictionary. Key is category title -->
+                                <td>{{ expense.0 }}</td><td>{{ expense.1|linebreaks }}</td>
+                            {% else %}
+                                <td></td><td></td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ day_dict.day_sum }}</td>    <!-- SUM for 1 day -->
+                    {% else %}
+                        {% for category in user_expense_categories %}
+                            <td></td><td></td>
+                        {% endfor %}
+                        <td></td>   <!-- empty cell of SUM for 1 day -->
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <th>Итого:</th>
+                    {% for category in summary_by_category %}
+                        <td colspan="2">{% dict_value summary_by_category category %}</td>
+                    {% endfor %}
+            </tr>
+       </table>
+        {% if summary_by_group %}
+            <h3><i>Расходы по группам:</i></h3>
+                <ul>
+                {% for group in summary_by_group %}
+                    <li>{{ group }}: {% dict_value summary_by_group group %}</li>
+                {% endfor %}
+                </ul>
+        {% endif %}
+
+
+{% endblock %}

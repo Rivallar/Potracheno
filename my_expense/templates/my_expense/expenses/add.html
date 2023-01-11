@@ -1,0 +1,17 @@
+{% extends 'my_expense/base.html' %}
+{% load static %}
+{% block title %}Внести расходы{% endblock %}
+{% block content %}
+    <h1>Тут можно ввести информацию о своих расходах.</h1>
+    <p>Ты можешь просто заполнять поля формы ниже, хотя гораздо проще вносить своих расходы через
+    <a href="#"><i>наш telegram-бот.</i></a></p>
+    <form class="add_cat" action="." method="post">
+        {% for form in expense_formset %}
+           <p {% if not forloop.first %} class="invisible" {% endif %}>{{ form }}</p>
+        {% endfor %}
+        {% csrf_token %}
+        {{ expense_formset.management_form }}
+        <p class="center"><input class="add_cat" type="submit" value="Добавить"></p>
+    </form>
+
+{% endblock %}

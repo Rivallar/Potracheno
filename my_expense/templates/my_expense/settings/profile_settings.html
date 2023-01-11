@@ -19,7 +19,7 @@
     <hr>
     <h1 class="with_hint">Категории твоих расходов:</h1>
     <p class="smaller hint">(перетащи, чтобы изменить порядок)</p>
-    {% if expense_categories %} <!-- Category order editing mode -->
+    {% if mode == 'edit' %} <!-- Category order editing mode -->
         <div>
             <ul id="sortable">
                 {% for cat in expense_categories %}
@@ -78,7 +78,7 @@
     var plates = document.getElementsByClassName("del_cat");
     for (var i = 0; i < plates.length; i++) {
         plates[i].addEventListener('click', function(event) {
-            var checkbox = $(event.currentTarget).children('input[name$="check"]');
+            var checkbox = $(event.currentTarget).children('input[name$="DELETE"]');
             if (checkbox.prop("checked") == false) {
                 checkbox.prop("checked", true);
                 $(event.currentTarget).children('.category').addClass("delete");

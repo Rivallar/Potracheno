@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from .models import Category, Profile, Expense
 
+
 # Register your models here.
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -28,8 +29,8 @@ class UserAdmin(AuthUserAdmin):
 
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
-	list_display = ('timestamp','user', 'category', 'price', 'comment')
-	list_filter = ('user', 'category')
+	list_display = ('timestamp', 'user', 'category', 'price', 'comment')
+	list_filter = ('user',)
 	ordering = ('-timestamp', )
 	search_fields = ('comment', )
 	date_hierarchy = 'timestamp'

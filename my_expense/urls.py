@@ -5,6 +5,7 @@ from . import views
 app_name = 'my_expense'
 
 urlpatterns = [
+	path('add/expense/', views.add_expense_view, name='add_expense'),
 	path('profile/', views.profile_view, name='profile'),
 	path('profile/settings/', views.profile_settings_view, name='profile_settings'),
 	path('profile/settings/add_categories/', views.edit_categories_view, name='add_categories'),
@@ -14,5 +15,3 @@ urlpatterns = [
 	path('profile/settings/edit_categories/', views.edit_categories_view, name='edit_categories'),
 	path('', views.view_expenses, name='view_expenses'),
 	]
-
-

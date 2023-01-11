@@ -250,6 +250,8 @@
 			opacity: 0;
 			position: absolute;
 			}
+		.errorlist {
+			}
 
 		/* icon bar */
 		#icon_bar {
@@ -383,12 +385,29 @@
 			margin-right: 15px;
 			text-align: center;
 			}
+		.del_cat label {
+			opacity: 0;
+			position: absolute;
+			}
 		.delete {
 			box-shadow: 0 0 5px 5px red;
 			padding: 8px 13px;
 			font-size: 115%;
 			border: none;
 			color: white;
+			}
+
+		/* tables */
+		.expense_table {
+			border-style: solid;
+			border-width: 1px;
+			border-collapse: collapse;
+			}
+
+		.expense_table th, td {
+			border-style: solid;
+			border-width: 1px;
+			border-collapse: collapse;
 			}
 
 	</style>
@@ -406,7 +425,7 @@
 	</div>
 	<div id="sidebar">
 		<ul>
-			<li><a href="#" class="border-button">Добавить расходы</a></li>
+			<li><a href="{% url 'my_expense:add_expense' %}" class="border-button">Добавить расходы</a></li>
 			<li><a href="#" class="border-button">История расходов</a></li>
 			<li><a href="#" class="border-button">Немного статистики</a></li>
 			<li><a href="#" class="border-button">Долги</a></li>

@@ -12,7 +12,7 @@
         Так статистика будет вестись как по каждой категории так и по группе в целом.</p>
     <p><i>P.S. Всего можно создать <u>до 10-ти категорий</u>. Тебе же этого хватит, да?</i></p><br>
     {% if formset.forms %}
-        <form class ="add_cat" action="{% url 'my_expense:edit_categories' %}" method="post">
+        <form class="add_cat" action="{% url 'my_expense:edit_categories' %}" method="post">
             {% for form in formset %}
                 <p {% if not forloop.first %} class="invisible" {% endif %}>
                     <span class="counter">{{ forloop.counter }}:</span> {{ form }}</p>
