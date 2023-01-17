@@ -17,11 +17,21 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+from rest_framework.schemas import get_schema_view
 
+
+API_TITLE = 'POTRACHENO api'
+API_DESCRIPTION = 'Api for telegram bot to add expenses and edit groups'
+
+schema_view = get_schema_view(title=API_TITLE)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+    path('docs/', include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
     path('my_expenses/', include('my_expense.urls', namespace='my_expense')),
+    path('schema/', schema_view),
     path('', include('accounts.urls', namespace='accounts')),
 ]
 
