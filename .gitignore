@@ -5,4 +5,5 @@ venv/
 *.pyc
 *~
 __pycache__
+telegram_bot/bot_settings.py
 

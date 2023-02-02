@@ -78,18 +78,21 @@ def profile_settings_view(request):
                 except IntegrityError as e:
                     if 'UNIQUE constraint failed: auth_user.username' in e.args[0]:     # this username already exists
                         messages.error(request, f'Username "{cd["username"]}" уже занят.')
-                        context['user_form'] = UserEditForm(initial=initial)
+                    elif 'UNIQUE constraint failed: my_expense_profile.phone' in e.args[0]:  # this phone already exists
+                        messages.error(request, f'Телефон "{cd["phone"]}" уже занят.')
                     else:
                         messages.error(request, 'Ошибка! Проверьте введённые данные.')
+                        # messages.error(request, e.args[0])
+                    context['user_form'] = UserEditForm(initial=initial)
     else:
         context['user_form'] = UserEditForm(initial=initial)
 
-        # whether to delete or change order of expense categories
-        if 'delete_categories' in request.path.split('/'):
-            context['delete_formset'] = DeleteCategoryFormset(queryset=Category.objects.filter(profile=user.profile))
-        else:
-            context['expense_categories'] = Category.objects.filter(profile=user.profile)
-            context['mode'] = 'edit'
+    # whether to delete or change order of expense categories
+    if 'delete_categories' in request.path.split('/'):
+        context['delete_formset'] = DeleteCategoryFormset(queryset=Category.objects.filter(profile=user.profile))
+    else:
+        context['expense_categories'] = Category.objects.filter(profile=user.profile)
+        context['mode'] = 'edit'
     return render(request, 'my_expense/settings/profile_settings.html', context)
 
 

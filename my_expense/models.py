@@ -10,7 +10,8 @@ class Profile(models.Model):
     """User profile with additional info"""
 
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
-    phone = models.CharField(max_length=50, blank=True)
+    phone = models.PositiveIntegerField(unique=True)
+    telegram_chat_id = models.PositiveIntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -51,7 +52,7 @@ class Expense(models.Model):
     """Keeps information about one expense"""
 
     user = models.ForeignKey(User, related_name='expenses', on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, related_name='all_cat_expenses', null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, related_name='all_cat_expenses', on_delete=models.CASCADE)
 
     price = models.DecimalField(max_digits=6, decimal_places=2)
     comment = models.CharField(max_length=254, blank=True)

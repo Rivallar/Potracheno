@@ -9,7 +9,7 @@ class UserEditForm(forms.Form):
     first_name = forms.CharField(label='Имя', required=False)
     last_name = forms.CharField(label='Фамилия', required=False)
     email = forms.EmailField(label='E-mail', required=False)
-    phone = forms.CharField(label='Телефон', required=False)
+    phone = forms.IntegerField(label='Телефон', required=False, widget=forms.TextInput)
 
 
 # formset to delete categories

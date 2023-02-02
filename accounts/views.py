@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
@@ -16,6 +17,7 @@ def index_view(request):
 
 	return render(request, 'accounts/index.html')
 
+
 def user_register(request):
 
 	"""Registers new user, creates his empty profile and automatically logs him in"""
@@ -23,14 +25,18 @@ def user_register(request):
 	if request.method == 'POST':
 		user_form = UserRegistrationForm(request.POST)
 		if user_form.is_valid():
-			new_user = user_form.save(commit=False)
-			new_user.set_password(user_form.cleaned_data['password'])
-			new_user.save()
-			Profile.objects.create(user=new_user)
-			login(request, new_user)
-			return redirect('my_expense:profile')
-		else:
-			return render(request, 'accounts/register.html', {'user_form': user_form})
+			cd = user_form.cleaned_data
+			if not Profile.objects.filter(phone=cd['phone']).exists():
+				new_user = user_form.save(commit=False)
+				new_user.set_password(user_form.cleaned_data['password'])
+				new_user.save()
+				Profile.objects.create(user=new_user, phone=cd['phone'])
+				login(request, new_user)
+				return redirect('my_expense:profile_settings')
+			else:
+				user_form.add_error('phone', 'Номер телефона уже используется')
+				return render(request, 'accounts/register.html', {'user_form': user_form})
+		return render(request, 'accounts/register.html', {'user_form': user_form})
 	else:
 		user_form = UserRegistrationForm()
 		return render(request, 'accounts/register.html', {'user_form': user_form})
